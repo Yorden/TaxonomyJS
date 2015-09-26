@@ -1,0 +1,16 @@
+{
+    "data": {
+        "level1":
+          {"Cordata":{
+              "Mammalia":{},
+              "Amphibia":{},
+              "Reptilia":{}
+            },
+           "Arthropoda":{
+              "Crustacea":{},
+              "Arachnida":{}
+              }
+          }
+
+    }
+}

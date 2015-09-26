@@ -1,0 +1,15 @@
+{
+  "name": "clientsideproject",
+  "version": "1.0.0",
+  "description": "The first Project for Client Side Devlopment",
+  "main": "Proj1.html",
+  "scripts": {
+    "test": "localhost"
+  },
+  "author": "Jordan Karlsruher",
+  "license": "ISC",
+  "dependencies": {
+    "jshint": "^2.8.0",
+    "localhost-now": "^1.0.1"
+  }
+}
