@@ -1,11 +1,14 @@
-function onloadFunction(){
-	$.getJSON('./data.json', function(data) {         
+
+var Gdata = {};
+window.onload = function(){
+	$.getJSON('./data.json', function(data) {
 		console.log(data);
+		Gdata = data;
 	});
 }
 
-function changeData(level){
 
+function changeData(level){
 	var body = document.getElementById("parentContainer")
 	if(level == 1){
 		//if the level 2 does not equal null, remove the level2 element from the body
@@ -16,19 +19,22 @@ function changeData(level){
 			body.removeChild(document.getElementById("level3"));
 		}
 		//if the value of level 1 is fruit
-		if($("level1").value == "fruit"){
+		if($g("level1").value == "Chordata"){
 			createNewElement(2);
-			addOption("level2", "", "");
-			addOption("level2", "Summer", "summer");
-			addOption("level2", "Winter", "winter");
+			addOption("level2", "");
+			addOption("level2", Gdata.Chordata.Mammalia.title);
+			addOption("level2", Gdata.Chordata.Reptilia.title);
+			addOption("level2", Gdata.Chordata.Amphibia.title);
+
 
 		}
 		//if the value of level 1 is candy
-		else if($("level1").value == "candy"){
+		else if($g("level1").value == "Arthropoda"){
 			createNewElement(2);
-			addOption("level2", "", "");
-			addOption("level2", "Chocolate", "chocolate");
-			addOption("level2", "Sugary", "sugary");
+			addOption("level2", "");
+			addOption("level2", Gdata.Arthropoda.Crustacea.title);
+			addOption("level2", Gdata.Arthropoda.Arachnida.title);
+			addOption("level2", Gdata.Arthropoda.Insecta.title);
 
 		}
 
@@ -38,32 +44,52 @@ function changeData(level){
 			body.removeChild(document.getElementById("level3"));
 		}
 
-		if($("level2").value == "summer"){
+		if($g("level2").value == "Mammalia"){
 			createNewElement(3);
-			addOption("level3", "", "");
-			addOption("level3", "Grapes", "grapes");
-			addOption("level3", "Berries", "berries");
+			addOption("level3", "");
+			addOption("level3", Gdata.Chordata.Mammalia.Cetacea.title);
+			addOption("level3", Gdata.Chordata.Mammalia.Carnivora.title);
+			addOption("level3", Gdata.Chordata.Mammalia.Chiroptera.title);
+
 
 		}
-		else if($("level2").value == "winter"){
+		else if($g("level2").value == "Reptilia"){
 			createNewElement(3);
-			addOption("level3", "", "");
-			addOption("level3", "Apples", "apples");
-			addOption("level3", "Banana", "bananas");
+			addOption("level3", "");
+			addOption("level3", Gdata.Chordata.Reptilia.Crocodilia.title);
+			addOption("level3", Gdata.Chordata.Reptilia.Squamata.title);
+			addOption("level3", Gdata.Chordata.Reptilia.Chelonia.title);
+		}
+		else if($g("level2").value == "Amphibia"){
+			createNewElement(3);
+			addOption("level3", "");
+			addOption("level3", Gdata.Chordata.Amphibia.Anura.title);
+			addOption("level3", Gdata.Chordata.Amphibia.Caudata.title);
+			addOption("level3", Gdata.Chordata.Amphibia.Gymnophiona.title);
 
 		}
-		if($("level2").value == "chocolate"){
+		else if($g("level2").value == "Crustacea"){
 			createNewElement(3);
-			addOption("level3", "", "");
-			addOption("level3", "Hershey Bar", "hershey bar");
-			addOption("level3", "M&M's", "mms");
+			addOption("level3", "");
+			addOption("level3", Gdata.Arthropoda.Crustacea.Isopoda.title);
+			addOption("level3", Gdata.Arthropoda.Crustacea.Decapoda.title);
+			addOption("level3", Gdata.Arthropoda.Crustacea.Cladocera.title);
 
 		}
-		else if($("level2").value == "sugary"){
+		else if($g("level2").value == "Arachnida"){
 			createNewElement(3);
-			addOption("level3", "", "");
-			addOption("level3", "Gummy Bears", "gummybears");
-			addOption("level3", "Skittles", "skittles");
+			addOption("level3", "");
+			addOption("level3", Gdata.Arthropoda.Arachnida.Uropygi.title);
+			addOption("level3", Gdata.Arthropoda.Arachnida.Araneae.title);
+			addOption("level3", Gdata.Arthropoda.Arachnida.Scorpiones.title);
+
+		}
+		else if($g("level2").value == "Insecta"){
+			createNewElement(3);
+			addOption("level3", "");
+			addOption("level3", Gdata.Arthropoda.Insecta.Coleoptera.title);
+			addOption("level3", Gdata.Arthropoda.Insecta.Dermaptera.title);
+			addOption("level3", Gdata.Arthropoda.Insecta.Orthoptera.title);
 
 		}
 
@@ -71,10 +97,10 @@ function changeData(level){
 
 
 }
-
-function $(object){
-	return document.getElementById(object);
+function $g(ObjectID){
+	return document.getElementById(ObjectID);
 }
+
 
 function removeAllOptions(ObjectID){
 	var select = document.getElementById(ObjectID);
@@ -86,11 +112,11 @@ function removeAllOptions(ObjectID){
 
 }
 
-function addOption(ObjectID, title, value){
+function addOption(ObjectID, title){
 	var x = document.getElementById(ObjectID);
 	var option = document.createElement("option");
 	option.text = title;
-	option.value = value;
+	option.value = title;
 	x.add(option);
 
 }
