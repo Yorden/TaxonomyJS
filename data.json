@@ -1,80 +1,54 @@
 {
 
     "Chordata": {
-      "title":"Chordata",
       "Mammalia":{
-        "title":"Mammalia",
         "Cetacea":{
-          "title":"Cetacea"
         },
         "Carnivora":{
-          "title":"Carnivora"
         },
         "Chiroptera":{
-          "title":"Chiroptera"
         }
       },
       "Reptilia":{
-        "title":"Reptilia",
         "Crocodilia":{
-          "title":"Crocodilia"
         },
         "Squamata":{
-          "title":"Squamata"
         },
         "Chelonia":{
-          "title":"Chelonia"
         }
       },
       "Amphibia":{
-        "title":"Amphibia",
         "Anura":{
-          "title":"Anura"
         },
         "Caudata":{
-          "title":"Caudata"
         },
         "Gymnophiona":{
-          "title":"Gymnophiona"
         }
       }
     },
     "Arthropoda":{
-      "title":"Arthropoda",
       "Crustacea":{
-        "title":"Crustacea",
         "Isopoda":{
-          "title":"Isopoda"
         },
         "Decapoda":{
-          "title":"Decapoda"
         },
         "Cladocera":{
-          "title":"Cladocera"
         }
       },
       "Arachnida":{
-        "title":"Arachnida",
         "Uropygi":{
-          "title":"Uropygi"
         },
         "Araneae":{
-          "title":"Araneae"
         },
         "Scorpiones":{
-          "title":"Scorpiones"
         }
       },
       "Insecta":{
-        "title":"Insecta",
         "Coleoptera":{
-          "title":"Coleoptera"
         },
         "Dermaptera":{
-          "title":"Dermaptera"
         },
         "Orthoptera":{
-          "title":"Orthoptera"
         }
       }
     }

@@ -1,5 +1,5 @@
-
 var Gdata = {};
+var LevelObj = {};
 window.onload = function(){
 	$.getJSON('./data.json', function(data) {
 		console.log(data);
@@ -7,9 +7,11 @@ window.onload = function(){
 	});
 }
 
-
+//onChange event handler
 function changeData(level){
-	var body = document.getElementById("parentContainer")
+	//get the element to add the new Selects to
+	var body = document.getElementById("selectContainer");
+	//if the select is level one
 	if(level == 1){
 		//if the level 2 does not equal null, remove the level2 element from the body
 		if(document.getElementById("level2") != null){
@@ -18,100 +20,41 @@ function changeData(level){
 		if(document.getElementById("level3") != null){
 			body.removeChild(document.getElementById("level3"));
 		}
-		//if the value of level 1 is fruit
-		if($g("level1").value == "Chordata"){
-			createNewElement(2);
-			addOption("level2", "");
-			addOption("level2", Gdata.Chordata.Mammalia.title);
-			addOption("level2", Gdata.Chordata.Reptilia.title);
-			addOption("level2", Gdata.Chordata.Amphibia.title);
+		//get the object of the selected object from the
+		LevelObj = Gdata[Object.keys(Gdata)[$g("level1").selectedIndex-1]];
 
-
-		}
-		//if the value of level 1 is candy
-		else if($g("level1").value == "Arthropoda"){
-			createNewElement(2);
-			addOption("level2", "");
-			addOption("level2", Gdata.Arthropoda.Crustacea.title);
-			addOption("level2", Gdata.Arthropoda.Arachnida.title);
-			addOption("level2", Gdata.Arthropoda.Insecta.title);
-
+		//creates a new select element
+		createNewElement(2);
+		//adds the options from the Json object to the select
+		addOption("level2", "");
+		for(var a = 0; a < Object.keys(LevelObj).length; a++){
+			addOption("level2", Object.keys(LevelObj)[a]);
 		}
 
 	}
+	//if the change in selects happens on the second level
 	if(level == 2){
+		//clear the thrird level
 		if(document.getElementById("level3") != null){
 			body.removeChild(document.getElementById("level3"));
 		}
-
-		if($g("level2").value == "Mammalia"){
-			createNewElement(3);
-			addOption("level3", "");
-			addOption("level3", Gdata.Chordata.Mammalia.Cetacea.title);
-			addOption("level3", Gdata.Chordata.Mammalia.Carnivora.title);
-			addOption("level3", Gdata.Chordata.Mammalia.Chiroptera.title);
-
-
+		//get the level 2 object based off of the level 1 object
+		var LevelObj2 = LevelObj[Object.keys(LevelObj)[$g("level2").selectedIndex-1]];
+		//create the object and options...
+		createNewElement(3);
+		addOption("level3", "");
+		for(var a = 0; a < Object.keys(LevelObj2).length; a++){
+			addOption("level3", Object.keys(LevelObj2)[a]);
 		}
-		else if($g("level2").value == "Reptilia"){
-			createNewElement(3);
-			addOption("level3", "");
-			addOption("level3", Gdata.Chordata.Reptilia.Crocodilia.title);
-			addOption("level3", Gdata.Chordata.Reptilia.Squamata.title);
-			addOption("level3", Gdata.Chordata.Reptilia.Chelonia.title);
-		}
-		else if($g("level2").value == "Amphibia"){
-			createNewElement(3);
-			addOption("level3", "");
-			addOption("level3", Gdata.Chordata.Amphibia.Anura.title);
-			addOption("level3", Gdata.Chordata.Amphibia.Caudata.title);
-			addOption("level3", Gdata.Chordata.Amphibia.Gymnophiona.title);
 
-		}
-		else if($g("level2").value == "Crustacea"){
-			createNewElement(3);
-			addOption("level3", "");
-			addOption("level3", Gdata.Arthropoda.Crustacea.Isopoda.title);
-			addOption("level3", Gdata.Arthropoda.Crustacea.Decapoda.title);
-			addOption("level3", Gdata.Arthropoda.Crustacea.Cladocera.title);
-
-		}
-		else if($g("level2").value == "Arachnida"){
-			createNewElement(3);
-			addOption("level3", "");
-			addOption("level3", Gdata.Arthropoda.Arachnida.Uropygi.title);
-			addOption("level3", Gdata.Arthropoda.Arachnida.Araneae.title);
-			addOption("level3", Gdata.Arthropoda.Arachnida.Scorpiones.title);
-
-		}
-		else if($g("level2").value == "Insecta"){
-			createNewElement(3);
-			addOption("level3", "");
-			addOption("level3", Gdata.Arthropoda.Insecta.Coleoptera.title);
-			addOption("level3", Gdata.Arthropoda.Insecta.Dermaptera.title);
-			addOption("level3", Gdata.Arthropoda.Insecta.Orthoptera.title);
-
-		}
 
 	}
-
-
 }
+//returns the specified object
 function $g(ObjectID){
 	return document.getElementById(ObjectID);
 }
-
-
-function removeAllOptions(ObjectID){
-	var select = document.getElementById(ObjectID);
-	var length = select.options.length;
-	for (i = 0; i < length; i++) {
-		select.options[i].selected = false;
-		select.options[i] = null;
-	}
-
-}
-
+//adds an option to the chosen select
 function addOption(ObjectID, title){
 	var x = document.getElementById(ObjectID);
 	var option = document.createElement("option");
@@ -127,7 +70,7 @@ function createNewElement(level){
 	select.setAttribute("id", "level" + level);
 	select.setAttribute("onchange", "changeData("+level+")")
 
-	var element = document.getElementById("parentContainer");
+	var element = document.getElementById("selectContainer");
 
 	element.appendChild(select);
 
