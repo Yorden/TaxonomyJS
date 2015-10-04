@@ -1,9 +1,10 @@
 body{
+  background-color: #cccccc;
   font-family: 'Cutive Mono', ;
 }
 select{
   font-family: 'Cutive Mono', ;
-  background-color: #ffffff;
+  background-color: #eeeeee;
   border-color: #000000;
   border-width: medium;
   width: 400px;

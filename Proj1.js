@@ -21,11 +21,16 @@ function changeData(level){
 		if(document.getElementById("level3") != null){
 			body.removeChild(document.getElementById("level3"));
 		}
+		//reomve objects if level1 changes
 		if($g("pClass") != undefined){
 			$g("pClass").remove();
 		}
 		if($g("pOrder") != undefined){
 			$g("pOrder").remove();
+		}
+
+		if($g("newNode") != undefined){
+			$g("newNode").remove();
 		}
 
 		//get the object of the selected object from the
@@ -38,11 +43,11 @@ function changeData(level){
 		//adds the options from the Json object to the select
 		addOption("level2", "");
 
-
+		//sets all the values for the selects
 		for(var a = 0; a < Object.keys(LevelObj).length; a++){
 			addOption("level2", Object.keys(LevelObj)[a]);
 		}
-
+		//fades in the select
 		fadeOpacity("level2");
 
 	}
@@ -57,6 +62,10 @@ function changeData(level){
 			console.log("asdads")
 			$g("pOrder").remove();
 		}
+		if($g("newNode") != undefined){
+			$g("newNode").remove();
+		}
+
 		//get the level 2 object based off of the level 1 object
 		var LevelObj2 = LevelObj[Object.keys(LevelObj)[$g("level2").selectedIndex-1]];
 		createLabelElement("Order");
@@ -70,7 +79,18 @@ function changeData(level){
 
 	}
 	if(level == 3){
+		//delets the node if it is not undefined
+		if($g("newNode") != undefined){
+			$g("newNode").remove();
+		}
 		$g("image").src = "./images/"+ $g("level3").value + ".jpg";
+		var node = document.createElement("p");
+		var textNode = document.createTextNode("This is the order " + $g("level3").value +
+	  " under the class " + $g("level2").value + " within the " + $g("level1").value + " phylum.");
+		node.appendChild(textNode);
+		node.setAttribute("id", "newNode");
+
+		$g("newText").appendChild(node);
 
 	}
 }
