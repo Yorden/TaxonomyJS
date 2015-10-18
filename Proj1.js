@@ -39,7 +39,7 @@ function changeData(level){
 		createLabelElement("Class");
 
 		//creates a new select element
-		createNewElement(2, "select");
+		createNewElement(2);
 		//adds the options from the Json object to the select
 		addOption("level2", "");
 

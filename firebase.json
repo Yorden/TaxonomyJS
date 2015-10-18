@@ -1,0 +1,9 @@
+{
+  "firebase": "taxonomyjs",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

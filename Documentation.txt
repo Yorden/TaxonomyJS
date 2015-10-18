@@ -1,0 +1,11 @@
+DOCUMENTATION
+
+I think the project turned out pretty well.  I think I was able to get the amount of code down really low
+and get it to be super reusable for different JSON files and I am very happy about that.  In terms of what
+I could have done better, I think that I could have done a better job of making the code perfect.  The code
+is pretty code, but it could always be better.  If I had a bit more time, I could have made the project fully scalable,
+when right now the project is only scalable to 3 levels.
+
+I think I did a good job when it came to the design of the app.  I like the fade ins I added to the selects.  I also like
+the pictures that show up.  I think those are really cool.  There a bunch of requirements for part 2 of the project,
+but I had completed them all for part 1 anyway, so all the functionality is all there.
